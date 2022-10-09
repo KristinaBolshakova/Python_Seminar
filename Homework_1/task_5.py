@@ -2,11 +2,11 @@
 
 import math
 
-print('Введите координат точки А: ')
+print('Введите координаты точки А: ')
 xa = int(input(''))
 ya = int(input(''))
 
-print('Введите координату точки B: ')
+print('Введите координаты точки B: ')
 xb = int(input(''))
 yb = int(input(''))
 
