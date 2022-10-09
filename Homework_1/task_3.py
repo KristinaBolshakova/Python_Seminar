@@ -7,13 +7,13 @@
 
 print('Введите координаты ')
 x, y = int(input('X: ')), int(input('Y: '))
-if (x > 0 and y > 0):
+if x > 0 and y > 0:
     print('Точка находится в 1 четверти')
-elif (x < 0 and y > 0):
+elif x < 0 and y > 0:
     print('Точка находится во 2 четверти')
-elif (x < 0 and y < 0):
+elif x < 0 and y < 0:
     print('Точка находится в 3 четверти')
-elif (x > 0 and y < 0):
+elif x > 0 and y < 0:
     print('Точка находится в 4 четверти')
 else:
-    print('Точка находится на оси') 
+    print('Точка находится на оси X или Y') 
