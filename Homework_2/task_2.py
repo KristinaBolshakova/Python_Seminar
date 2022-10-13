@@ -6,4 +6,9 @@
 
 N = int(input('Введите число N: '))
 
-
+num = 1
+for i in range(N):
+    i = i + 1
+    num = i * num
+    
+    print(num, end=" ")
