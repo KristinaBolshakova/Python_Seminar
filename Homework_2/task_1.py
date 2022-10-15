@@ -15,18 +15,5 @@ for i in num_string:
 print(f'Сумма цифр числа {num} =', sum)
 
 
-
 # print(sum(map(int, list(".join(c for c in input('Введите число: ') if c.isdecimal)))))
 # or isdigit()
-
-
-
-
-
-
-
-
-
-
-
-
