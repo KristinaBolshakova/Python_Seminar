@@ -17,8 +17,7 @@ for line in f:
         prod *= num_list[int(line)]
         new_list.append(num_list[int(line)])
 
-print(new_list)
-
+# print(new_list)
 print('Произведение элементов на указанных позициях =', prod if prod != 1 else 'Значения не найдены')
 
 
