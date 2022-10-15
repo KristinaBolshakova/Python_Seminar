@@ -10,12 +10,12 @@ print(num_list)
 
 prod = 1
 new_list = []
- 
-with open('file.txt', 'r') as file:
-    for line in file:
-        if int(line) < len(num_list):
-            prod *= num_list[int(line)]
-            new_list.append(num_list[int(line)])
+
+f = open('file.txt', 'r')
+for line in f:
+    if int(line) < len(num_list):
+        prod *= num_list[int(line)]
+        new_list.append(num_list[int(line)])
 
 print(new_list)
 
