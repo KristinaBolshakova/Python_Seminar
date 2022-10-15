@@ -7,8 +7,17 @@
 
 n = int(input('Введите число n: '))
 sum = 0
-for i in range(1, n+1):
+for i in range(1, n+1):             
     num = (1 + 1 / i) ** i
     sum += num
-    print(sum)
+print(sum)
+
+# num = [1]
+# for i in range(1, N + 1):
+#     num.append(i * num[-1])
+
+#     print(num[i], end=" ")
+
+# добавить через список - append
+
 
