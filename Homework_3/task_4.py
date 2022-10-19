@@ -4,3 +4,16 @@
 # - 45 -> 101101
 # - 3 -> 11
 # - 2 -> 10
+
+num = int(input("Введите число: "))
+bin_num = ""
+while num != 0:
+    bin_num = str(num % 2) + bin_num
+    num //= 2           #>>=1
+print(bin_num)
+
+
+
+# a = 44
+# print(bin(a)[2:])
+
