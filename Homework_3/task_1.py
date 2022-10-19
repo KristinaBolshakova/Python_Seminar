@@ -13,7 +13,7 @@ for i in range(num):
 
 sum = 0
 
-for i in range(len(list)):
+for i in range(num):
     if i % 2 != 0:   
         sum += int(list[i])
 

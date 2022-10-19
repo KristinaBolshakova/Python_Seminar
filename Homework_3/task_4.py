@@ -7,7 +7,7 @@
 
 num = int(input("Введите число: "))
 bin_num = ""
-while num != 0:
+while num:   #num != 0:
     bin_num = str(num % 2) + bin_num
     num //= 2           #>>=1
 print(bin_num)

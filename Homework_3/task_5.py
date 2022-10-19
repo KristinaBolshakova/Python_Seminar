@@ -25,7 +25,8 @@ for i in range (n+1):
     a, b = b, a - b
 negafib.reverse()
 # print(negafib)
-print(f'для k = {negafib}+{fib}')
+nf = negafib + fib
+print(f'для k = {nf}')
 
     
 

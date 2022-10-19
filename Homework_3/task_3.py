@@ -17,10 +17,11 @@ for i in range(num):
 min = 1
 max = 0
 for i in list:
-    if (i - int(i)) <= min:
-        min = i - int(i)
-    if (i - int(i)) >= max:
-        max = i - int(i)
+    elem = i - int(i)
+    if elem <= min:
+        min = elem 
+    if elem >= max:
+        max = elem
 
 diff = max-min
 
