@@ -13,10 +13,10 @@ for i in range(k+1):
     list_ratio.append(randint(0, 100))
 print(f'Список случайных коэффициентов: {list_ratio}')
 print()
-new_list.append(f'k = {k} => ')
+# new_list_f1.append(f'k = {k} => ')
 for i in list_ratio:
-    print(f'{i}*x**{k}', end = ' + ')
-    new_list.append(f'{i}*x**{k} + ')
+    print(f'{i}x^{k}', end = ' + ')   
+    new_list.append(f'{i}x^{k} + ')
     k -= 1
     if k == 0:
         break
@@ -28,6 +28,8 @@ data.writelines(new_list)
 data.close
 
 exit()
+
+
         
 
 
