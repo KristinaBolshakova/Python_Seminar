@@ -15,7 +15,7 @@ for i in range(3, int(math.sqrt(num)) +1, 2):
         num_list.append(i)
         # print(i)
         num = num / i
-if num>2:
+else:   #if num>2:    
     num_list.append(int(num))
     # print(num)
 print(f'Простые множетели числа N: {num_list}')
