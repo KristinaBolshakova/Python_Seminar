@@ -22,7 +22,7 @@ for i in list_ratio:
         break
 print(f'{list_ratio[-1]}', end = ' = 0')
 new_list.append(f'{list_ratio[-1]} = 0' )
-print(new_list)
+# print(new_list)
 
 data.writelines(new_list)
 data.close
