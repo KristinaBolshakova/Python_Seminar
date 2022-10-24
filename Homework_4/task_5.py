@@ -46,7 +46,7 @@ def rat_pol(rat):
     return num
 
 # разбор многочлена и получение его коэффициентов
-def calc_mn(st):
+def del_mnog(st):
     st = st[0].replace(' ', '').split('=')
     st = st[0].split('+')
     lst = []
@@ -76,8 +76,8 @@ with open('Homework_4-1.txt', 'r') as data:
     pol_2 = data.readlines()
 print(f'Первый полином - {pol_1}')
 print(f'Второй полином - {pol_2}')
-lst1 = calc_mn(pol_1)
-lst2 = calc_mn(pol_2)
+lst1 = del_mnog(pol_1)
+lst2 = del_mnog(pol_2)
 ll = len(lst1)
 if len(lst1) > len(lst2):
     ll = len(lst2)
