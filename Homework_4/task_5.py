@@ -1,57 +1,97 @@
 # Даны два файла, в каждом из которых находится запись многочлена. Задача - сформировать файл, содержащий сумму многочленов.
 
-# from random import randint
+# создание многочлена в виде строки 
+def pol_line(line):
+    lst= line[::-1]
+    wr = ''
+    if len(lst) < 1:
+        wr = 'x = 0'
+    else:
+        for i in range(len(lst)):
+            if i != len(lst) - 1 and lst[i] != 0 and i != len(lst) - 2:
+                wr += f'{lst[i]}x^{len(lst)-i-1}'
+                if lst[i+1] != 0 or lst[i+2] != 0:
+                    wr += ' + '
+            elif i == len(lst) - 2 and lst[i] != 0:
+                wr += f'{lst[i]}x'
+                if lst[i+1] != 0 or lst[i+2] != 0:
+                    wr += ' + '
+            elif i == len(lst) - 1 and lst[i] != 0:
+                wr += f'{lst[i]} = 0'
+            elif i == len(lst) - 1 and lst[i] == 0:
+                wr += ' = 0'
+    return wr
 
-# k = int(input('Введите натуральную степень k = '))
-# data_1 = open('Homework_4-1.txt', 'w')
+# запись в файл
+def write_file(name,form):
+    with open(name, 'w') as data:
+        data.write(form)
 
-# list_ratio = []
-# new_list_f1 = []
-# for i in range(k+1):
-#     list_ratio.append(randint(0, 100))
-# print(f'Список случайных коэффициентов: {list_ratio}')
-# print()
-# # new_list_f1.append(f'k = {k} => ')
-# for i in list_ratio:
-#     print(f'{i}x^{k}', end = ' + ')
-#     new_list_f1.append(f'{i}x^{k} + ')
-#     k -= 1
-#     if k == 0:
-#         break
-# print(f'{list_ratio[-1]}', end = ' = 0')
-# new_list_f1.append(f'{list_ratio[-1]} = 0' )
-# # print(new_list)
+# получение степени многочлена
+def deg_pol(deg):
+    if 'x^' in deg:
+        pos = deg.find('^')
+        num = int(deg[pos+1:])
+    elif ('x' in deg) and ('^' not in deg):
+        num = 1
+    else:
+        num = -1
+    return num
 
-# data_1.writelines(new_list_f1)
-# data_1.close
-# exit()
+# получение коэффицента члена многочлена
+def rat_pol(rat):
+    if 'x' in rat:
+        i = rat.find('x')
+        num = int(rat[:i])
+    return num
 
-path = 'Homework_4.txt'
-data = open(path, 'r')
-for line in data:
-    print(line)
+# разбор многочлена и получение его коэффициентов
+def calc_mn(st):
+    st = st[0].replace(' ', '').split('=')
+    st = st[0].split('+')
+    lst = []
+    l = len(st)
+    k = 0
+    if deg_pol(st[-1]) == -1:
+        lst.append(int(st[-1]))
+        l -= 1
+        k = 1
+    i = 1 # степень
+    ii = l-1 # индекс
+    while ii >= 0:
+        if deg_pol(st[ii]) != -1 and deg_pol(st[ii]) == i:
+            lst.append(rat_pol(st[ii]))
+            ii -= 1
+            i += 1
+        else:
+            lst.append(0)
+            i += 1
+        
+    return lst
     
+# нахождение суммы многочлена
+with open('Homework_4.txt', 'r') as data:
+    pol_1 = data.readlines()
+with open('Homework_4-1.txt', 'r') as data:
+    pol_2 = data.readlines()
+print(f'Первый полином - {pol_1}')
+print(f'Второй полином - {pol_2}')
+lst1 = calc_mn(pol_1)
+lst2 = calc_mn(pol_2)
+ll = len(lst1)
+if len(lst1) > len(lst2):
+    ll = len(lst2)
+lst_new = [lst1[i] + lst2[i] for i in range(ll)]
+if len(lst1) > len(lst2):
+    mm = len(lst1)
+    for i in range(ll,mm):
+        lst_new.append(lst1[i])
+else:
+    mm = len(lst2)
+    for i in range(ll,mm):
+        lst_new.append(lst2[i])
 
-path_1 = 'Homework_4-1.txt'
-data_1 = open(path_1, 'r')
-for line_1 in data_1:
-    print(line_1)
-
-data.close()
-data_1.close()
-
-data_2 = open('Homework_4-2.txt', 'w')
-
-# sum = 0            
-# if sum = int(line[0])+int(line_1[0])
-# print(sum)
-
-
-# import re
-# s = line
-# nums = re.findall(r'\d+', s)
-# nums = [int(i) for i in nums]
-# print(nums)
-
-data_2.close
-exit()
+write_file('Homework_4-2.txt', pol_line(lst_new))
+with open('Homework_4-2.txt', 'r') as data:
+    sum_pol = data.readlines()
+print(f"Сумма полиномов = {sum_pol}")
