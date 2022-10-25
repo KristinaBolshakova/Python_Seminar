@@ -1,33 +1,32 @@
 # Даны два файла, в каждом из которых находится запись многочлена. Задача - сформировать файл, содержащий сумму многочленов.
 
-# создание многочлена в виде строки 
+
 def pol_line(line):
     lst= line[::-1]
-    wr = ''
+    ln_pol = ''
     if len(lst) < 1:
-        wr = 'x = 0'
+        ln_pol = 'x = 0'
     else:
         for i in range(len(lst)):
             if i != len(lst) - 1 and lst[i] != 0 and i != len(lst) - 2:
-                wr += f'{lst[i]}x^{len(lst)-i-1}'
+                ln_pol += f'{lst[i]}x^{len(lst)-i-1}'
                 if lst[i+1] != 0 or lst[i+2] != 0:
-                    wr += ' + '
+                    ln_pol += ' + '
             elif i == len(lst) - 2 and lst[i] != 0:
-                wr += f'{lst[i]}x'
+                ln_pol += f'{lst[i]}x'
                 if lst[i+1] != 0 or lst[i+2] != 0:
-                    wr += ' + '
+                    ln_pol += ' + '
             elif i == len(lst) - 1 and lst[i] != 0:
-                wr += f'{lst[i]} = 0'
+                ln_pol += f'{lst[i]} = 0'
             elif i == len(lst) - 1 and lst[i] == 0:
-                wr += ' = 0'
-    return wr
+                ln_pol += ' = 0'
+    return ln_pol
 
-# запись в файл
 def write_file(name,form):
     with open(name, 'w') as data:
         data.write(form)
 
-# получение степени многочлена
+
 def deg_pol(deg):
     if 'x^' in deg:
         pos = deg.find('^')
@@ -38,14 +37,14 @@ def deg_pol(deg):
         num = -1
     return num
 
-# получение коэффицента члена многочлена
+
 def rat_pol(rat):
     if 'x' in rat:
         i = rat.find('x')
         num = int(rat[:i])
     return num
 
-# разбор многочлена и получение его коэффициентов
+
 def del_mnog(st):
     st = st[0].replace(' ', '').split('=')
     st = st[0].split('+')
@@ -69,7 +68,7 @@ def del_mnog(st):
         
     return lst
     
-# нахождение суммы многочлена
+
 with open('Homework_4.txt', 'r') as data:
     pol_1 = data.readlines()
 with open('Homework_4-1.txt', 'r') as data:
