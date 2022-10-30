@@ -1,9 +1,6 @@
 # Напишите программу, удаляющую из текста все слова, в которых присутствуют все буквы "абв"
-print()
-text = input('Введите текст через пробел и нажмите Enter:\n').split()
-print()
-# print(text)
 
+text = input('Введите текст через пробел и нажмите Enter:\n').split()
 new_text = []
 
 for i in range(len(text)):
@@ -23,6 +20,5 @@ for i in range(len(text)):
               
 print('Полученный текст: ')              
 print(*text_1, sep=' ')
-print()
 
 # аванс авбанс ваганоаб код мел мАбвб
