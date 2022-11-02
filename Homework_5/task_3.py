@@ -30,21 +30,21 @@ def print_mas(print_elem):
 print_mas(mas)
 
 def you_win(win_pos):
-    if (win_pos[0][0] == win_pos[0][1] == win_pos[0][2]) != '-':
+    if win_pos[0][0] == win_pos[0][1] == win_pos[0][2] != '-':
         return win_pos[0][0]
-    elif (win_pos[1][0] == win_pos[1][1] == win_pos[1][2]) != '-':
+    elif win_pos[1][0] == win_pos[1][1] == win_pos[1][2] != '-':
         return win_pos[1][0]
-    elif (win_pos[2][0] == win_pos[2][1] == win_pos[2][2]) != '-':
+    elif win_pos[2][0] == win_pos[2][1] == win_pos[2][2] != '-':
         return win_pos[2][0]
-    elif (win_pos[0][0] == win_pos[1][0] == win_pos[2][0]) != '-':
+    elif win_pos[0][0] == win_pos[1][0] == win_pos[2][0] != '-':
         return win_pos[0][0]
-    elif (win_pos[0][1] == win_pos[1][1] == win_pos[2][1]) != '-':
+    elif win_pos[0][1] == win_pos[1][1] == win_pos[2][1] != '-':
         return win_pos[0][1]
-    elif (win_pos[0][2] == win_pos[1][2] == win_pos[2][2]) != '-':
+    elif win_pos[0][2] == win_pos[1][2] == win_pos[2][2] != '-':
         return win_pos[0][2]
-    elif (win_pos[0][0] == win_pos[1][1] == win_pos[2][2]) != '-':
+    elif win_pos[0][0] == win_pos[1][1] == win_pos[2][2] != '-':
         return win_pos[0][0]
-    elif (win_pos[2][0] == win_pos[1][1] == win_pos[0][2]) != '-':
+    elif win_pos[2][0] == win_pos[1][1] == win_pos[0][2] != '-':
         return win_pos[2][0]
     else:
         return False
