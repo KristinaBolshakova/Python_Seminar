@@ -1,6 +1,6 @@
 # Создайте программу для игры в ""Крестики-нолики"".
 
-from itertools import count
+
 from random import randint
 
 
@@ -22,47 +22,49 @@ else:
 
 mas = [['-' for i in range(3)] for j in range(3)]
 
-def print_mas(mas_2):
-    for i in mas_2:
+def print_mas(print_elem):
+    for i in print_elem:
         print(*i)
     return
 
 print_mas(mas)
 
-def you_win(mas_3):
-    if (mas_3[0][0] == mas_3[0][1] == mas_3[0][2]) != '-':
-        return mas_3[0][0]
-    elif (mas_3[1][0] == mas_3[1][1] == mas_3[1][2]) != '-':
-        return mas_3[1][0]
-    elif (mas_3[2][0] == mas_3[2][1] == mas_3[2][2]) != '-':
-        return mas_3[2][0]
-    elif (mas_3[0][0] == mas_3[1][0] == mas_3[2][0]) != '-':
-        return mas_3[0][0]
-    elif (mas_3[0][1] == mas_3[1][1] == mas_3[2][1]) != '-':
-        return mas_3[0][1]
-    elif (mas_3[0][2] == mas_3[1][2] == mas_3[2][2]) != '-':
-        return mas_3[0][2]
-    elif (mas_3[0][0] == mas_3[1][1] == mas_3[2][2]) != '-':
-        return mas_3[0][0]
-    elif (mas_3[2][0] == mas_3[1][1] == mas_3[0][2]) != '-':
-        return mas_3[2][0]
+def you_win(win_pos):
+    if (win_pos[0][0] == win_pos[0][1] == win_pos[0][2]) != '-':
+        return win_pos[0][0]
+    elif (win_pos[1][0] == win_pos[1][1] == win_pos[1][2]) != '-':
+        return win_pos[1][0]
+    elif (win_pos[2][0] == win_pos[2][1] == win_pos[2][2]) != '-':
+        return win_pos[2][0]
+    elif (win_pos[0][0] == win_pos[1][0] == win_pos[2][0]) != '-':
+        return win_pos[0][0]
+    elif (win_pos[0][1] == win_pos[1][1] == win_pos[2][1]) != '-':
+        return win_pos[0][1]
+    elif (win_pos[0][2] == win_pos[1][2] == win_pos[2][2]) != '-':
+        return win_pos[0][2]
+    elif (win_pos[0][0] == win_pos[1][1] == win_pos[2][2]) != '-':
+        return win_pos[0][0]
+    elif (win_pos[2][0] == win_pos[1][1] == win_pos[0][2]) != '-':
+        return win_pos[2][0]
     else:
         return False
 
 
-def step(mas_1, player):
+def step(pos, player):
+    print(f'Ходит игрок {player}')
+    
     st, col = int(input('ряд: ')), int(input('столбец: '))
     
-    if mas_1[st-1][col-1] == 'X' or mas_1[st-1][col-1] == 'O':
+    if pos[st-1][col-1] == 'X' or pos[st-1][col-1] == 'O':
         print('Эта клетка занята, выбирайте другую.')
 
     elif player == 1:
-        mas_1[st-1][col-1] = 'X'
-        print_mas(mas_1)
+        pos[st-1][col-1] = 'X'
+        print_mas(pos)
 
     elif player == 2:
-        mas_1[st-1][col-1] = 'O'
-        print_mas(mas_1)
+        pos[st-1][col-1] = 'O'
+        print_mas(pos)
     
 
 count = 0
@@ -79,7 +81,7 @@ while True:
         print(f'Победил(а) {player_2}')
         break
     elif count == 9:
-        print('ничья')
+        print('Ничья')
         break
     if cur_player == 1:
         cur_player = 2
