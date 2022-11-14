@@ -10,56 +10,48 @@ def prod(prod_num):
         if i == text.index('*'): 
             prod_num = str(float(text[i-1]) * float(text[i+1]))
             a = text.index('*')
-            text.pop(a-1)
-            a = text.index('*')
             text.pop(a+1)
-            text.insert(i, prod_num)
-            a = text.index('*')
             text.pop(a)
+            text.pop(a-1)
+            text.insert(i-1, prod_num)
             break
 
 def div(div_num):
     for i in range(len(text)):
         if i == text.index('/'):
-            if int(text[i+1]) == 0:
+            if float(text[i+1]) == 0:
                 print('На ноль делить нельзя!')
                 sys.exit()
             else:
                 div_num = str(float(text[i-1]) / float(text[i+1]))
                 a = text.index('/')
-                text.pop(a-1)
-                a = text.index('/')
                 text.pop(a+1)
-                text.insert(i, div_num)
-                a = text.index('/')
                 text.pop(a)
+                text.pop(a-1)
+                text.insert(i-1, div_num)
                 break
-
 
 def sum(sum_num):
     for i in range(len(text)):
         if i == text.index('+'): 
             sum_num = str(float(text[i-1]) + float(text[i+1]))
             a = text.index('+')
-            text.pop(a-1)
-            a = text.index('+')
             text.pop(a+1)
-            text.insert(i, sum_num)
-            a = text.index('+')
             text.pop(a)
+            text.pop(a-1)
+            text.insert(i-1, sum_num)
             break
+
 
 def dif(diff_num):
     for i in range(len(text)):
         if i == text.index('-'):
             diff_num = str(float(text[i-1]) - float(text[i+1]))
             a = text.index('-')
-            text.pop(a-1)
-            a = text.index('-')
             text.pop(a+1)
-            text.insert(i, diff_num)
-            a = text.index('-')
             text.pop(a)
+            text.pop(a-1)
+            text.insert(i-1, diff_num)
             break
 
 for i in range(len(text)):
