@@ -1,6 +1,15 @@
 # Напишите программу вычисления арифметического выражения заданного строкой. Используйте операции +,-,/,*. приоритет операций стандартный.
 # 112+6*3/2*5-2
 
+# 1 вариант
+
+from sympy import sympify
+
+expr = input('Введите пример: ').strip()
+print(f'{expr} = {sympify(expr)}')
+
+
+# 2 вариант
 #Решение без ()
 
 import sys
@@ -33,7 +42,7 @@ def div(div_num):
                 text.insert(i-1, div_num)
                 break
 
-def sum(sum_num):
+def summ(sum_num):
     for i in range(len(text)):
         if i == text.index('+'): 
             sum_num = str(float(text[i-1]) + float(text[i+1]))
