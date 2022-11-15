@@ -3,6 +3,7 @@
 
 # 1 вариант
 
+from decimal import Decimal
 from sympy import sympify
 
 expr = input('Введите пример: ').strip()
@@ -16,90 +17,82 @@ import sys
 
 text = input('Введите пример: ').replace('+', ' + ').replace('-', ' - ').replace('/', ' / ').replace('*', ' * ').split()
 
-def prod(prod_num):
-    for i in range(len(text)):
-        if i == text.index('*'): 
-            prod_num = str(float(text[i-1]) * float(text[i+1]))
-            a = text.index('*')
-            text.pop(a+1)
-            text.pop(a)
-            text.pop(a-1)
-            text.insert(i-1, prod_num)
+
+def prod():
+    for j in range(len(text)):
+        if j == text.index('*'):
+            text[j] = str(Decimal(text[j - 1]) * Decimal(text[j + 1]))
+            text.pop(j + 1)
+            text.pop(j - 1)
             break
 
-def div(div_num):
-    for i in range(len(text)):
-        if i == text.index('/'):
-            if float(text[i+1]) == 0:
+
+def div():
+    for j in range(len(text)):
+        if j == text.index('/'):
+            if Decimal(text[j + 1]) == 0:
                 print('На ноль делить нельзя!')
                 sys.exit()
             else:
-                div_num = str(float(text[i-1]) / float(text[i+1]))
-                a = text.index('/')
-                text.pop(a+1)
-                text.pop(a)
-                text.pop(a-1)
-                text.insert(i-1, div_num)
+                text[j] = str(Decimal(text[j - 1]) / Decimal(text[j + 1]))
+                text.pop(j + 1)
+                text.pop(j - 1)
                 break
 
-def summ(sum_num):
-    for i in range(len(text)):
-        if i == text.index('+'): 
-            sum_num = str(float(text[i-1]) + float(text[i+1]))
-            a = text.index('+')
-            text.pop(a+1)
-            text.pop(a)
-            text.pop(a-1)
-            text.insert(i-1, sum_num)
+
+def summ():
+    for j in range(len(text)):
+        if j == text.index('+'):
+            text[j] = str(Decimal(text[j - 1]) + Decimal(text[j + 1]))
+            text.pop(j + 1)
+            text.pop(j - 1)
             break
 
 
-def dif(diff_num):
-    for i in range(len(text)):
-        if i == text.index('-'):
-            diff_num = str(float(text[i-1]) - float(text[i+1]))
-            a = text.index('-')
-            text.pop(a+1)
-            text.pop(a)
-            text.pop(a-1)
-            text.insert(i-1, diff_num)
+def dif():
+    for j in range(len(text)):
+        if j == text.index('-'):
+            text[j] = str(Decimal(text[j - 1]) - Decimal(text[j + 1]))
+            text.pop(j + 1)
+            text.pop(j - 1)
             break
+
 
 for i in range(len(text)):
     while len(text) > 1:
         while '*' in text or '/' in text:
             if len(text) == 1:
-                print('Результат вычисления= ', *text, sep= '')
+                print('Результат вычисления= ', *text, sep='')
                 break
             elif '*' in text and '/' in text:
                 p = text.index('*')
                 d = text.index('/')
                 if p < d:
-                    prod(text) 
+                    prod()
                 elif p > d:
-                    div(text)
+                    div()
             elif '*' not in text:
-                div(text)
+                div()
             elif '/' not in text:
-                prod(text)
+                prod()
             elif not '*' and '/' in text:
                 break
         while '+' or '-' in text:
             if len(text) == 1:
-                print('Результат вычисления= ', *text, sep= '')
+                print('Результат вычисления= ', *text, sep='')
                 break
             if '+' in text and '-' in text:
                 s = text.index('+')
                 d = text.index('-')
                 if s < d:
-                    sum(text) 
+                    summ()
                 elif s > d:
-                    dif(text)
+                    dif()
             elif '+' not in text:
-                dif(text)
+                dif()
             elif '-' not in text:
-                sum(text)
-            elif not '+' in text and not '-' in text:
-                break      
+                summ()
+            elif '+' not in text and '-' not in text:
+                break
     else:
         break
